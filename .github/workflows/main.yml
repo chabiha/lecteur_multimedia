@@ -27,9 +27,6 @@ jobs:
       - name: Accepter toutes les licences Android
         run: yes | flutter doctor --android-licenses || true
 
-      - name: Forcer compileSdk = 36 (corrige le conflit file_picker)
-        run: set +e; sed -i -E 's/compileSdk(Version)?[ =]+.*/compileSdk = 36/' android/app/build.gradle; sed -i -E 's/compileSdk(Version)?[ =]+.*/compileSdk = 36/' android/app/build.gradle.kts; echo "--- preuve du patch ---"; grep -in compilesdk android/app/build.gradle android/app/build.gradle.kts; set -e
-
       - name: Récupérer les packages
         run: flutter pub get
 
