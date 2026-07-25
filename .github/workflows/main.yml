@@ -24,10 +24,13 @@ jobs:
           channel: 'stable'
           flutter-version: '3.44.6'
 
+      - name: Accepter TOUTES les licences Android (NDK, SDK 36, etc.)
+        run: yes | flutter doctor --android-licenses || true
+
       - name: Récupérer les packages
         run: flutter pub get
 
-      - name: Construire l'APK (debug, installable sans keystore)
+      - name: Construire l'APK
         run: flutter build apk --debug
 
       - name: Mettre l'APK à disposition
